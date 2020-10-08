@@ -1,11 +1,23 @@
 #! /bin/bash
 
-if test $# -eq 0
+if [ $# -lt 2 ]
 then
-	echo "Usage $0 pattern file" > /dev/tty
-elif test $# -eq 2
-then 
-	grep "$1" $2 || echo "$1 not found in $2" > /dev/tty
+	echo "Usage: [file1] [file2]"
+	exit 128
+fi
+
+if [ -f $1 ]
+then
+	echo "Attributes of $1"
+	ls -l $1
 else
-	echo "You didn't enter two arguments" > /dev/tty
+	echo "$1 is not a file"
+fi
+
+if [ -f $2 ]
+then
+	echo "Attributes of $2"
+	ls -l $2
+else
+	echo "$2 is not a file"
 fi
