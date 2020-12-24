@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -9,6 +10,7 @@ int main() {
 		printf("In the child process, sleeping for 2s...\n");
 		sleep(2);
 		printf("Done sleeping!\n");
+		exit(10);
 	} else {
 		printf("Waiting in the parent process...\n");
 		wait(&wstatus);
